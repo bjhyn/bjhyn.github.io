@@ -99,15 +99,6 @@
         $(function () {
             $(".open-about").focus();
 
-            $("#txtAmt").click(function () {
-                var txtFocus = document.getElementById("txtAmt");
-                var position = txtFocus.value.length;
-
-                txtFocus.setSelectionRange(position, position);
-                txtFocus.focus();
-
-            });
-
             $("#btnPay").addClass("disabled");
             $("#btnPay").click(function () {
                 if (payClickYN) {
