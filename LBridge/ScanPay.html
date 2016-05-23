@@ -20,13 +20,17 @@
             margin-bottom: 0.5rem;
         }
 
+        .mt {
+            margin-top: 0rem;
+        }
+
         .col-25 a {
             font-size: 16px;
         }
     </style>
 </head>
 <body>
-    <div class="page list-block media-list">
+    <div class="page list-block media-list mt">
         <ul>
             <li>
                 <div class="item-content">
@@ -81,7 +85,7 @@
                 <div class="col-25"><a href="#" class="button button-big button-light" onclick="fn_numUp('.')">.</a></div>
             </div>
             <div style="position:absolute;right:0.75rem;bottom:1rem;width:20%">
-                <a href="#" id="btnPay" class="button button-big button-fill button-success" 
+                <a href="#" id="btnPay" class="button button-big button-fill button-success"
                    style="display:block;height:8.1rem;width: 100%;vertical-align:middle;padding-top:70%;font-size:20px;font-weight: bold;">支付</a>
             </div>
         </div>
@@ -90,9 +94,8 @@
     <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script>
     <!--<script src="../Scripts/jquery-1.9.1.js"></script>-->
     <script type="text/javascript">
-        $(document).on('focus', '.open-about', function () {
-            $.popup('.popup-about');
-            fn_keybHAdjust();
+        $(function () {
+            $(".open-about").focus();
 
             $("#txtAmt").click(function () {
                 var txtFocus = document.getElementById("txtAmt");
@@ -109,6 +112,12 @@
                 });
             });
 
+            $("#txtAmt").trigger("focus");
+        });
+
+        $(document).on('focus', '.open-about', function () {
+            $.popup('.popup-about');
+            fn_keybHAdjust();
         });
 
         function fn_keybHAdjust() {
@@ -129,7 +138,7 @@
             var arrAmt = $val.split(".");
             $val += num;
             if (arrAmt.length > 1) {
-                if(arrAmt[1].length > 1)
+                if (arrAmt[1].length > 1)
                     return;
                 else
                     $("#txtAmt").val($val);
