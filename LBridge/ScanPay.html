@@ -1,0 +1,152 @@
+﻿<html class="pixel-ratio-1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>L.BRIDGE COFFEE</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <style type="text/css">
+        #txtAmt {
+            text-align: right;
+            border: 1px solid #CE102D;
+            border-radius: 0.3rem;
+            padding: 0.3rem;
+            font-size: 1.2rem;
+        }
+
+        .mb {
+            margin-bottom: 0.5rem;
+        }
+
+        .col-25 a {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page list-block media-list">
+        <ul>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><img src="../images/Logo.png" style='width: 1.8rem;'></div>
+                    <div class="item-inner">
+                        <div class="item-title-row">
+                            <div class="item-title">伦敦桥咖啡(L.BRIDGE COFFEE)</div>
+                        </div>
+                        <div class="item-subtitle">13548751288</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-inner">
+                        <div class="item-text" style="height:3rem;">
+                            <div class="search-input">
+                                <label class="icon" for="txtAmt">消费金额(￥)</label>
+                                <input type="text" id="txtAmt" class="open-about" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="popup popup-about">
+        <div class="content-block">
+            <div class="row mb">
+                <div class="col-25"><a href="#" class="button button-big button-light" onclick="fn_numUp('1')">1</a></div>
+                <div class="col-25"><a href="#" class="button button-big button-light" onclick="fn_numUp('2')">2</a></div>
+                <div class="col-25"><a href="#" class="button button-big button-light" onclick="fn_numUp('3')">3</a></div>
+                <div class="col-25"><a href="#" class="button button-big button-light" onclick="fn_numBack()"><</a></div>
+            </div>
+            <div class="row mb">
+                <div class="col-25"><a href="#" class="button button-big button-light" onclick="fn_numUp('4')">4</a></div>
+                <div class="col-25"><a href="#" class="button button-big button-light" onclick="fn_numUp('5')">5</a></div>
+                <div class="col-25"><a href="#" class="button button-big button-light" onclick="fn_numUp('6')">6</a></div>
+            </div>
+            <div class="row mb">
+                <div class="col-25"><a href="#" class="button button-big button-light" onclick="fn_numUp('7')">7</a></div>
+                <div class="col-25"><a href="#" class="button button-big button-light" onclick="fn_numUp('8')">8</a></div>
+                <div class="col-25"><a href="#" class="button button-big button-light" onclick="fn_numUp('9')">9</a></div>
+            </div>
+            <div class="row mb">
+                <div class="col-25">
+                    <a href="#" class="button button-big button-light close-popup" style="padding-top: .5rem">
+                        <img src="../images/keyboard.png" style="width:2rem;height:1.5rem" />
+                    </a>
+                </div>
+                <div class="col-25"><a href="#" class="button button-big button-light" onclick="fn_numUp('0')">0</a></div>
+                <div class="col-25"><a href="#" class="button button-big button-light" onclick="fn_numUp('.')">.</a></div>
+            </div>
+            <div style="position:absolute;right:0.75rem;bottom:1rem;width:20%">
+                <a href="#" id="btnPay" class="button button-big button-fill button-success" 
+                   style="display:block;height:8.1rem;width: 100%;vertical-align:middle;padding-top:70%;font-size:20px;font-weight: bold;">支付</a>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script>
+    <!--<script src="../Scripts/jquery-1.9.1.js"></script>-->
+    <script type="text/javascript">
+        $(document).on('focus', '.open-about', function () {
+            $.popup('.popup-about');
+            fn_keybHAdjust();
+
+            $("#txtAmt").click(function () {
+                var txtFocus = document.getElementById("txtAmt");
+                var position = txtFocus.value.length;
+
+                txtFocus.setSelectionRange(position, position);
+                txtFocus.focus();
+
+            });
+
+            $("#btnPay").click(function () {
+                $.alert('支付成功！', function () {
+                    $("#txtAmt").val("");
+                });
+            });
+
+        });
+
+        function fn_keybHAdjust() {
+            var keysH = $(".content-block").height() + 30;
+            var windH = $(window).height();
+            var keysHR = keysH / windH * 100 + "%";
+            var keysTopR = (100 - keysH / windH * 100) + "%";
+
+            $(".popup-overlay.modal-overlay-visible").hide();
+            $(".popup").css("top", keysTopR);
+            $(".popup").css("height", keysHR);
+            $(".content-block").css("margin-top", ".5rem");
+            $(".content-block").css("margin-bottom", ".5rem");
+        }
+
+        function fn_numUp(num) {
+            var $val = $("#txtAmt").val();
+            var arrAmt = $val.split(".");
+            $val += num;
+            if (arrAmt.length > 1) {
+                if(arrAmt[1].length > 1)
+                    return;
+                else
+                    $("#txtAmt").val($val);
+            } else if (num != "." && arrAmt[0] > 1000) {
+                $.toast("超过可支付最大金额");
+                return;
+            } else {
+                $("#txtAmt").val($val);
+
+            }
+        }
+
+        function fn_numBack() {
+            var $val = $("#txtAmt").val();
+            $val = $val.substring(0, $val.length - 1);
+            $("#txtAmt").val($val);
+        }
+    </script>
+</body>
+</html>

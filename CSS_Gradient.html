@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        .clearBoth {
+            clear: both;
+        }
+
+        .outer {
+            border: solid 1px #000;
+            padding: 2px;
+            float: left;
+            margin: 2px;
+        }
+
+        .demo {
+            width: 150px;
+            height: 80px;
+        }
+
+        .demo1 {
+            background: -webkit-linear-gradient(top,#ccc,#000);
+        }
+
+        .demo2 {
+            background: -webkit-linear-gradient(left,#ace,#f96);
+        }
+
+        .demo3 {
+            background: -webkit-linear-gradient(left top,#0ce,#f96);
+        }
+
+        .demo4 {
+            background: -webkit-linear-gradient(left,#3ef,#2e5,#f88,#05a);
+        }
+
+        .demo5 {
+            background: -webkit-linear-gradient(left,#3ef,#2e5 25%,#f88 50%,#05a);
+        }
+
+        .demo6 {
+            background: -webkit-linear-gradient(30deg,#ace,#f96); /*30度角*/
+        }
+
+        .demo7 {
+            background: -webkit-gradient(linear, 0 0, 100% 100%, from(#ace),to(#f96)); /*30度角*/
+        }
+
+        .demo8 {
+            background: -webkit-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,1)),#f96;
+        }
+
+        .demo9 {
+            background: -webkit-radial-gradient(#ace,#f96,#ff0);
+        }
+
+        .demo10 {
+            background: -webkit-radial-gradient(#ace,#f96 25%,#ff0);
+        }
+
+        .demo11 {
+            background: -webkit-radial-gradient(left bottom,circle,#ace,#f96 25%,#ff0);
+        }
+
+        .demo12 {
+            background: -webkit-radial-gradient(bottom left, ellipse, #ace, #f96, #1E90FF);
+        }
+
+        .demo13 {
+            /*background:-webkit-radial-gradient(ellipse closest-side, #ace, #f96 10%, #1E90FF 50%, #f96);*/
+            background: -webkit-radial-gradient(circle closest-side, #ace, #f96 10%, #1E90FF 50%, #f96);
+        }
+
+        .demo14 {
+            /*background:-webkit-radial-gradient(ellipse farthest-corner, #ace, #f96 10%, #1E90FF 50%, #f96);*/
+            background: -webkit-radial-gradient(circle farthest-corner, #ace, #f96 10%, #1E90FF 50%, #f96);
+        }
+
+        .demo15 {
+            background: -webkit-radial-gradient(#ace, #f96, #1E90FF);
+        }
+
+        .demo16 {
+            background: -webkit-radial-gradient(contain,#ace, #f96, #1E90FF);
+        }
+
+        .demo17 {
+            background: -webkit-radial-gradient(circle, #ace, #f96);
+        }
+
+        .demo18 {
+            background: -webkit-radial-gradient(80% 20%,closest-corner,#ace,#f96);
+        }
+
+        .demo19 {
+            background: -webkit-repeating-linear-gradient(-45deg, #ace, #ace 5px,#f96 5px, #f96 10px);
+            /*background: -webkit-repeating-linear-gradient(top left, #ace, #ace 5px, #f96 5px, #f96 10px);*/
+        }
+
+        .demo20 {
+            background: -webkit-repeating-radial-gradient( #ace, #ace 5px, #f96 5px, #f96 10px);
+        }
+    </style>
+
+    <style type="text/css">
+        ul {
+            overflow: hidden;
+            margin-top: 20px;
+            list-style-type:none;
+            padding-left:0px;
+        }
+
+        li {
+            width: 150px;
+            height: 80px;
+            margin-bottom: 10px;
+            float: left;
+            margin-right: 5px;
+            background: #ace;
+            /*Controls the size*/
+            -webkit-background-size: 20px 20px;
+            -moz-background-size: 20px 20px;
+            background-size: 20px 20px;
+        }
+
+            li.gradient1 {
+                background-image: -webkit-gradient( linear, 0 100%, 100% 0, color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent), to(transparent) );
+                background-image: -moz-linear-gradient( 45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent );
+                background-image: -o-linear-gradient( 45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent );
+                background-image: linear-gradient( 45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, gba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent );
+            }
+
+            li.gradient2 {
+                background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent), to(transparent));
+                background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+                background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+                background-image: linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+            }
+
+            li.gradient3 {
+                background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+                background-image: -moz-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+                background-image: -o-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+                background-image: linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+            }
+
+            li.gradient4 {
+                background-image: -webkit-gradient(linear, 0 0, 100% 0, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+                background-image: -moz-linear-gradient(0deg, rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+                background-image: -o-linear-gradient(0deg, rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+                background-image: linear-gradient(0deg, rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+            }
+
+            li.gradient5 {
+                background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #555), color-stop(.25, transparent), to(transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #555), color-stop(.25, transparent), to(transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #555)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #555));
+                background-image: -moz-linear-gradient(45deg, #555 25%, transparent 25%, transparent), -moz-linear-gradient(-45deg, #555 25%, transparent 25%, transparent), -moz-linear-gradient(45deg, transparent 75%, #555 75%), -moz-linear-gradient(-45deg, transparent 75%, #555 75%);
+                background-image: -o-linear-gradient(45deg, #555 25%, transparent 25%, transparent), -o-linear-gradient(-45deg, #555 25%, transparent 25%, transparent), -o-linear-gradient(45deg, transparent 75%, #555 75%), -o-linear-gradient(-45deg, transparent 75%, #555 75%);
+                background-image: linear-gradient(45deg, #555 25%, transparent 25%, transparent), linear-gradient(-45deg, #555 25%, transparent 25%, transparent), linear-gradient(45deg, transparent 75%, #555 75%), linear-gradient(-45deg, transparent 75%, #555 75%);
+            }
+
+            li.gradient6 {
+                background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.2, transparent), color-stop(.5, rgba(200, 0, 0, .5)), to(rgba(200, 0, 0, .5))), -webkit-gradient(linear, 0 0, 100% 0, color-stop(.5, transparent), color-stop(.5, rgba(200, 0, 0, .5)), to(rgba(200, 0, 0, .5)));
+                background-image: -moz-linear-gradient(transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5)), -moz-linear-gradient(90deg, transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5));
+                background-image: -o-linear-gradient(transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5)), -o-linear-gradient(90deg, transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5));
+                background-image: linear-gradient(transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5)), linear-gradient(90deg, transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5));
+            }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="demo demo1"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo2"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo3"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo4"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo5"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo6"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo7"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo8"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo9"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo10"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo11"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo12"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo13"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo14"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo15"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo16"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo17"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo18"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo19"></div>
+    </div>
+    <div class="outer">
+        <div class="demo demo20"></div>
+    </div>
+
+    <div class="clearBoth"></div>
+    <ul>
+        <li class="gradient gradient1"></li>
+        <li class="gradient gradient2"></li>
+        <li class="gradient gradient3"></li>
+        <li class="gradient gradient4"></li>
+        <li class="gradient gradient5"></li>
+        <li class="gradient gradient6"></li>
+    </ul>
+</body>
+</html>
