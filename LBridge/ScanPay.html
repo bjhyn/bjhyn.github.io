@@ -14,7 +14,7 @@
             border-radius: 0.3rem;
             padding: 0.3rem;
             font-size: 1.5rem;
-            height:2.6rem;
+            height: 2.6rem;
         }
 
         .mb {
@@ -95,6 +95,7 @@
     <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script>
     <!--<script src="../Scripts/jquery-1.9.1.js"></script>-->
     <script type="text/javascript">
+        var payClickYN = false;
         $(function () {
             $(".open-about").focus();
 
@@ -107,13 +108,15 @@
 
             });
 
+            $("#btnPay").addClass("disabled");
             $("#btnPay").click(function () {
-                $.alert('支付成功！', function () {
-                    $("#txtAmt").val("");
-                });
+                if (payClickYN) {
+                    $.alert('支付成功！', function () {
+                        $("#txtAmt").val("");
+                        fn_removePay();
+                    });
+                }
             });
-
-            $("#txtAmt").trigger("focus");
         });
 
         $(document).on('focus', '.open-about', function () {
@@ -137,6 +140,9 @@
         function fn_numUp(num) {
             var $val = $("#txtAmt").val();
             var arrAmt = $val.split(".");
+            if ($val == "" && num == ".") {
+                $val = "0";
+            }
             $val += num;
             if (arrAmt.length > 1) {
                 if (arrAmt[1].length > 1)
@@ -148,14 +154,29 @@
                 return;
             } else {
                 $("#txtAmt").val($val);
-
             }
+            fn_addPay();
         }
 
         function fn_numBack() {
             var $val = $("#txtAmt").val();
             $val = $val.substring(0, $val.length - 1);
             $("#txtAmt").val($val);
+            fn_addPay();
+        }
+
+        function fn_addPay() {
+            if ($("#txtAmt").val().length > 0) {
+                $("#btnPay").removeClass("disabled");
+                payClickYN = true;
+            } else {
+                fn_removePay();
+            }
+        }
+
+        function fn_removePay() {
+            $("#btnPay").addClass("disabled");
+            payClickYN = false;
         }
     </script>
 </body>
